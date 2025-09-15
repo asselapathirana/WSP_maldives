@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WSP Videos</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>WSP Video Playlist</h1>
+      <p class="lead">A curated set of embedded videos and downloadable resources.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Videos</h2>
+      <div id="videos" class="grid"></div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources">
+      <h2>Slides</h2>
+      <ul>
+        <li><a href="assets/WHY WSP.pdf" download>📑 WHY WSP</a></li>
+        <li><a href="assets/WSP 1.pdf" download>📑 WSP 1</a></li>
+        <li><a href="assets/WSP 2.pdf" download>📑 WSP 2</a></li>
+        <li><a href="assets/WSP 3.pdf" download>📑 WSP 3</a></li>
+        <li><a href="assets/WSP 4.pdf" download>📑 WSP 4</a></li>
+        <li><a href="assets/WSP 5.pdf" download>📑 WSP 5</a></li>
+        <li><a href="assets/WSP 6.pdf" download>📑 WSP 6</a></li>
+        <li><a href="assets/WSP 7.pdf" download>📑 WSP 7</a></li>
+      </ul>
+
+      <h2>Tasks</h2>
+      <ul>
+        <li><a href="assets/Task 1_Dhivehi.pdf" download>✅ Task 1 (Dhivehi)</a></li>
+        <li><a href="assets/Task 2_Dhivehi.pdf" download>✅ Task 2 (Dhivehi)</a></li>
+        <li><a href="assets/Task 3_Dhivehi.pdf" download>✅ Task 3 (Dhivehi)</a></li>
+        <li><a href="assets/Task 4_Dhivehi.pdf" download>✅ Task 4 (Dhivehi)</a></li>
+        <li><a href="assets/Task 5_Dhivehi.pdf" download>✅ Task 5 (Dhivehi)</a></li>
+        <li><a href="assets/Task 6_Dhivehi.pdf" download>✅ Task 6 (Dhivehi)</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© WSP — Static site generated for GitHub Pages.</small>
+    </div>
+  </footer>
+
+  <script src="data/videos.js"></script>
+  <script>
+  function asObj(v) {
+    return typeof v === 'string' ? {id: v, title: ''} : v;
+  }
+  const container = document.getElementById('videos');
+  (VIDEOS || []).map(asObj).forEach((item, idx) => {
+    const n = idx + 1;
+    const title = item.title && item.title.trim().length ? item.title : `WSP Video ${n}`;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h3>${title}</h3>
+      <div class="iframe-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/${item.id}"
+          title="${title}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+  </script>
+</body>
+</html>
